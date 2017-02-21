@@ -1,0 +1,2 @@
+chmod 644 message_listener/tests/*.py
+python3 -m nose --with-specplugin
