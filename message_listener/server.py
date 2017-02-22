@@ -20,10 +20,6 @@ class Server(Thread):
         self.socket.settimeout(0.5)
         self.socket.bind((ip, port))
 
-    def add_handler(self, handler, name):
-        #chek if implements iface & add to dict
-        self.handlers[name] = handler
-
     def run(self):
         try:
             while self.work:
@@ -38,7 +34,7 @@ class Server(Thread):
             self.socket.close()
 
     def join(self, timeout=None):
-        """stop server and all listeners"""
+        """stop server"""
         self.work = False
         self.socket.close()
         Thread.join(self, timeout)
