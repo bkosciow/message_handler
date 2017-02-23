@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Listen for incoming messages and pass them to registred handlers"""
+"""Listen for incoming messages and pass them to registered handlers"""
 
 __author__ = 'Bartosz Kościów'
 
@@ -9,7 +9,7 @@ from message_listener.abstract.handler_interface import Handler
 
 
 class Server(Thread):
-    """Listen for incoming messages and pass them to registred handlers"""
+    """Listen for incoming messages and pass them to registered handlers"""
     def __init__(self, message, port=5053, ip_address='0.0.0.0'):
         Thread.__init__(self)
         self.port = port
