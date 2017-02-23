@@ -13,7 +13,7 @@ class TestServer(object):
     def test_init(self):
         a = Server('mesg', 1024, '127.0.0.1')
         assert_equal(a.port, 1024)
-        assert_equal(a.ip, '127.0.0.1')
+        assert_equal(a.ip_address, '127.0.0.1')
         assert_equal(type(a.socket), type(socket.socket()))
 
     def test_it_should_add_handler(self):
