@@ -3,7 +3,9 @@
 
 
 class Handler(object):
-    """Interface for handlers"""
+    def __init__(self, worker):
+        self.worker = worker
+
     def handle(self, message):
         """handle a message"""
         raise NotImplementedError("handle not implemented")

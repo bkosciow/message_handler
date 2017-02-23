@@ -4,6 +4,7 @@ __author__ = 'Bartosz Kościów'
 
 import socket
 from threading import Thread
+from message_listener.abstract.handler_interface import Handler
 
 
 class Server(Thread):
@@ -20,7 +21,18 @@ class Server(Thread):
         self.socket.settimeout(0.5)
         self.socket.bind((ip, port))
 
+    def add_handler(self, name, handler):
+        """add new handler"""
+        if not isinstance(handler, Handler):
+            raise AttributeError('not a handler!')
+
+        if name is self.handlers:
+            raise AttributeError("name already used!")
+
+        self.handlers['name'] = handler
+
     def run(self):
+        """server loop"""
         try:
             while self.work:
                 try:
@@ -28,10 +40,16 @@ class Server(Thread):
                     message = self.message.decode_message(data.decode())
                     if message:
                         print("Message from %s: %s" % (address, message))
+                        self.serve_message(message)
                 except socket.timeout:
                     pass
         finally:
             self.socket.close()
+
+    def serve_message(self, message):
+        """pass message to registred handlers"""
+        for handler in self.handlers:
+            self.handlers[handler].handle(message)
 
     def join(self, timeout=None):
         """stop server"""
