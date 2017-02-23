@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Listen for incoming messages and pass them to registred handlers"""
 
 __author__ = 'Bartosz Kościów'
 
@@ -8,10 +9,11 @@ from message_listener.abstract.handler_interface import Handler
 
 
 class Server(Thread):
-    def __init__(self, message, port=5053, ip='0.0.0.0'):
+    """Listen for incoming messages and pass them to registred handlers"""
+    def __init__(self, message, port=5053, ip_address='0.0.0.0'):
         Thread.__init__(self)
         self.port = port
-        self.ip = ip
+        self.ip_address = ip_address
         self.handlers = {}
         self.work = True
         self.message = message
@@ -19,7 +21,7 @@ class Server(Thread):
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         self.socket.settimeout(0.5)
-        self.socket.bind((ip, port))
+        self.socket.bind((ip_address, port))
 
     def add_handler(self, name, handler):
         """add new handler"""
@@ -39,7 +41,6 @@ class Server(Thread):
                     data, address = self.socket.recvfrom(1024)
                     message = self.message.decode_message(data.decode())
                     if message:
-                        print("Message from %s: %s" % (address, message))
                         self.serve_message(message)
                 except socket.timeout:
                     pass

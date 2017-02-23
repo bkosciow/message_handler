@@ -9,3 +9,4 @@ class Handler(object):
     def handle(self, message):
         """handle a message"""
         raise NotImplementedError("handle not implemented")
+    

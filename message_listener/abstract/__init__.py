@@ -1,2 +1,2 @@
-"""message_listener module"""
+"""abstract module"""
 __author__ = 'Bartosz Kościów'
