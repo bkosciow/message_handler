@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 # pylint: disable=I0011,R0913,R0902
+"""Define Handler abstact"""
 
 
 class Handler(object):
