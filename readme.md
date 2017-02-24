@@ -1,7 +1,7 @@
 What it is
 ===
-
-Server for handlers.  
+App used at Raspberry Pi as receiver of incoming messages and pas them to registered handlers 
+(relay, screen, some sensors) 
 
     from message_listener.server import Server
     
@@ -9,7 +9,6 @@ Server for handlers.
     svr = Server(msg)
     svr.run()
 
-See more: [--](--)
+Read more: [--](--)
 
-Content
-===
+
