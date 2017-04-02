@@ -7,8 +7,9 @@ App used at Raspberry Pi as receiver of incoming messages and pas them to regist
     
     msg = Message('rpi1')
     svr = Server(msg)
-    svr.run()
+    svr.add_handler('20x4', Handler(lcd))
+    svr.start()
 
-Read more: [--](--)
+Read more: [https://koscis.wordpress.com/2017/03/03/raspberry-pi-as-a-node/](https://koscis.wordpress.com/2017/03/03/raspberry-pi-as-a-node/)
 
 

@@ -31,7 +31,7 @@ class Server(Thread):
         if name is self.handlers:
             raise AttributeError("name already used!")
 
-        self.handlers['name'] = handler
+        self.handlers[name] = handler
 
     def run(self):
         """server loop"""
