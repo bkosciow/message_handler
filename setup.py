@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""setup for CharLCD package"""
+"""setup for message_listener package"""
 
 import os
 from setuptools import setup, find_packages
@@ -13,7 +13,7 @@ def read(*paths):
 
 setup(
     name='message_listener',
-    version='0.1.0',
+    version='0.1.1',
     description='Server listener and iot_message handler',
     keywords=['iot_message', 'raspberry pi'],
     long_description=(read('readme.md')),
