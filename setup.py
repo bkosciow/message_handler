@@ -13,7 +13,7 @@ def read(*paths):
 
 setup(
     name='message_listener',
-    version='0.1.1',
+    version='0.1.2',
     description='Server listener and iot_message handler',
     keywords=['iot_message', 'raspberry pi'],
     long_description=(read('readme.md')),

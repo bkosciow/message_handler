@@ -10,8 +10,9 @@ from message_listener.abstract.handler_interface import Handler
 
 class Server(Thread):
     """Listen for incoming messages and pass them to registered handlers"""
-    def __init__(self, message, port=5053, ip_address='0.0.0.0'):
+    def __init__(self, message, port=5053, ip_address='0.0.0.0', buffer_size=65535):
         Thread.__init__(self)
+        self.buffer_size = buffer_size
         self.port = port
         self.ip_address = ip_address
         self.handlers = {}
@@ -38,7 +39,7 @@ class Server(Thread):
         try:
             while self.work:
                 try:
-                    data, address = self.socket.recvfrom(1024)
+                    data, address = self.socket.recvfrom(self.buffer_size)
                     message = self.message.decode_message(data.decode())
                     if message:
                         self.serve_message(message)
