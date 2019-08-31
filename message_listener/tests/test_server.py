@@ -31,3 +31,4 @@ class TestServer(object):
 
         a = Server('mesg', 1024, '127.0.0.1')
         assert_raises(AttributeError, a.add_handler, 'sample', SampleHandler)
+
