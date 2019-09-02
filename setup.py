@@ -16,7 +16,7 @@ setup(
     version='1.0.0',
     description='Server listener and iot_message handler',
     keywords=['iot_message', 'raspberry pi'],
-    long_description=(read('readme.md')),
+    long_description=(read('README.rst')),
     url='https://github.com/bkosciow/message_listener',
     license='MIT',
     author='Bartosz Kościów',
