@@ -19,6 +19,27 @@ App used at Raspberry Pi as receiver of incoming messages and pass them to regis
     svr.add_handler('NodeOne', HandlerDebug({}))
     svr.start()
 
+Add more than one handler:
+
+.. code-block::
+
+    svr = Server()
+    svr.add_handler('NodeOne', HandlerDebug({}))
+    svr.add_handler('NodeOne', HandlerDebug({}))
+    svr.start()
+
+or
+
+.. code-block::
+
+    svr = Server()
+    svr.add_handler('NodeOne', [
+        HandlerDebug({}),
+        HandlerDebug({})
+    ])
+    svr.start()
+
+
 Initialization:
 
 .. code-block::

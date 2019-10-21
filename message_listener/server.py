@@ -26,15 +26,18 @@ class Server(Thread):
         self.socket.bind((ip_address, port))
         self.ignore_missing_decoders = True
 
-    def add_handler(self, name, handler):
-        """add new handler"""
-        if not isinstance(handler, Handler):
-            raise AttributeError('not a handler!')
+    def add_handler(self, name, *argv):
+        """add new handler(s)"""
+        if name not in self.handlers:
+            self.handlers[name] = []
+        for handler in argv:
+            if not isinstance(handler, Handler):
+                raise AttributeError('not a handler!')
+            self.handlers[name].append(handler)
 
-        if name is self.handlers:
-            raise AttributeError("name already used!")
-
-        self.handlers[name] = handler
+    def get_handler(self, name):
+        """return hadnlers registred as name"""
+        return self.handlers[name]
 
     def run(self):
         """server loop"""
@@ -53,8 +56,9 @@ class Server(Thread):
 
     def serve_message(self, message):
         """pass message to registered handlers"""
-        for handler in self.handlers:
-            self.handlers[handler].handle(message)
+        for handlers in self.handlers:
+            for handler in self.handlers[handlers]:
+                handler.handle(message)
 
     def join(self, timeout=None):
         """stop server"""
