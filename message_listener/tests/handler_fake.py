@@ -2,10 +2,8 @@ from message_listener.abstract.handler_interface import \
     Handler as HandlerInterface
 
 
-class HandlerDebug(HandlerInterface):
+class HandlerFake(HandlerInterface):
     def handle(self, message):
         if message is not None:
-            self.print(message)
-
-    def print(self, message):
-        print(message)
+            {w.set(message) for w in self.workers}
+            print(message)

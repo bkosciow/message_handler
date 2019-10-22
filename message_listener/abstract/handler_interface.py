@@ -5,8 +5,10 @@
 
 class Handler(object):
     """Handler abstract"""
-    def __init__(self, worker):
-        self.worker = worker
+    def __init__(self, *argv):
+        self.workers = []
+        for worker in argv:
+            self.workers.append(worker)
 
     def handle(self, message):
         """handle a message"""
