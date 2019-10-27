@@ -39,6 +39,12 @@ or
     ])
     svr.start()
 
+Add workers:
+
+.. code-block::
+
+    Handler1(Worker1(), Worker2())
+
 
 Initialization:
 

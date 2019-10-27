@@ -30,3 +30,13 @@ class TestHandlerFake(object):
         h.handle("rambo")
         w1.set.assert_called_with("rambo")
         w2.set.assert_called_with("rambo")
+
+    def test_add_worker_via_add(self):
+        w1 = MagicMock()
+        w2 = MagicMock()
+        h = HandlerFake(w1)
+        h.add_worker(w2)
+        h.handle("rambo")
+        w1.set.assert_called_with("rambo")
+        w2.set.assert_called_with("rambo")
+

@@ -10,6 +10,9 @@ class Handler(object):
         for worker in argv:
             self.workers.append(worker)
 
+    def add_worker(self, worker):
+        self.workers.append(worker)
+
     def handle(self, message):
         """handle a message"""
         raise NotImplementedError("handle not implemented")
